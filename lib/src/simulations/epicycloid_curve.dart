@@ -2,8 +2,20 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:simulate/src/simulations/providers/epicycloid_curve_provider.dart';
 
 GlobalKey<_EpicycloidState> globalKey = GlobalKey<_EpicycloidState>();
+
+class EpicycloidCurveWp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => EpicycloidCurveProvider(),
+      child: EpicycloidCurve(),
+    );
+  }
+}
 
 class EpicycloidCurve extends StatefulWidget {
   @override
@@ -35,6 +47,7 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
       height: 924.0,
       allowFontScaling: true,
     );
+    final provider = Provider.of<EpicycloidCurveProvider>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -54,14 +67,14 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Visibility(
-          visible: animatefactor || animatepoints,
+          visible: provider.animatefactor || provider.animatepoints,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               FloatingActionButton(
                   heroTag: null,
                   backgroundColor: Colors.white,
-                  child: (!animating)
+                  child: (!provider.animating)
                       ? Icon(
                           Icons.play_arrow,
                           color: Colors.black,
@@ -71,11 +84,12 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
                           color: Colors.black,
                         ),
                   onPressed: () {
-                    setState(() {
-                      animating = !animating;
-                      factor = globalKey.currentState.widget.factor;
-                      total = globalKey.currentState.widget.total;
-                    });
+                    provider.switchAnimating();
+                    // setState(() {
+                    //   animating = !animating;
+                    //   factor = globalKey.currentState.widget.factor;
+                    //   total = globalKey.currentState.widget.total;
+                    // });
                   }),
               FloatingActionButton(
                 heroTag: null,
@@ -85,14 +99,15 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
                 ),
                 backgroundColor: Colors.white,
                 onPressed: () {
-                  setState(() {
-                    if (animatefactor) {
-                      factor = 0;
-                    }
-                    if (animatepoints) {
-                      total = 0;
-                    }
-                  });
+                  provider.clear();
+                  // setState(() {
+                  //   if (animatefactor) {
+                  //     factor = 0;
+                  //   }
+                  //   if (animatepoints) {
+                  //     total = 0;
+                  //   }
+                  // });
                 },
               )
             ],
@@ -115,11 +130,11 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
             child: Stack(
               children: <Widget>[
                 Epicycloid(
-                  factor: factor,
-                  total: total,
-                  animatefactor: animatefactor,
-                  animatepoints: animatepoints,
-                  animating: animating,
+                  // factor: provider.factor,
+                  // total: provider.point,
+                  // animatefactor: provider.animatefactor,
+                  // animatepoints: provider.animatepoints,
+                  // animating: provider.animating,
                   key: globalKey,
                   isLandscape: isLandscape(),
                 ),
@@ -132,15 +147,16 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
                         'Animate with Factor:',
                       ),
                       Checkbox(
-                        onChanged: (animating)
+                        onChanged: (provider.animating)
                             ? null
                             : (_) {
-                                setState(() {
-                                  animatefactor = !animatefactor;
-                                });
+                                provider.switchAnimateFactor();
+                                // setState(() {
+                                //   animatefactor = !animatefactor;
+                                // });
                               },
                         activeColor: Colors.red,
-                        value: animatefactor,
+                        value: provider.animatefactor,
                       ),
                     ],
                   ),
@@ -153,15 +169,16 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
                         'Animate with Points:',
                       ),
                       Checkbox(
-                        onChanged: (animating)
+                        onChanged: (provider.animating)
                             ? null
                             : (_) {
-                                setState(() {
-                                  animatepoints = !animatepoints;
-                                });
+                                provider.switchAnimatePoints();
+                                // setState(() {
+                                //   animatepoints = !animatepoints;
+                                // });
                               },
                         activeColor: Colors.red,
-                        value: animatepoints,
+                        value: provider.animatepoints,
                       ),
                     ],
                   ),
@@ -189,6 +206,7 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
   }
 
   Container parameters(BuildContext context, num height) {
+    final provider = Provider.of<EpicycloidCurveProvider>(context);
     return Container(
       height: height,
       child: Material(
@@ -206,20 +224,21 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
               divisions: 500,
               activeColor: Theme.of(context).accentColor,
               inactiveColor: Colors.grey,
-              onChanged: (animating)
+              onChanged: (provider.animating)
                   ? null
                   : (value) {
-                      setState(() {
-                        total = double.parse(value.toStringAsFixed(1));
-                      });
+                      // setState(() {
+                      //   total = double.parse(value.toStringAsFixed(1));
+                      // });
+                      provider.setPoints(value);
                     },
-              value: total,
+              value: provider.point,
             ),
             Center(
               child: Text(
                 (animating && animatepoints)
                     ? "Points: Animating"
-                    : "Points: ${total.toInt()}",
+                    : "Points: ${provider.point.toInt()}",
                 style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
@@ -229,20 +248,21 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
               divisions: 510,
               activeColor: Theme.of(context).accentColor,
               inactiveColor: Colors.grey,
-              onChanged: (animating)
+              onChanged: (provider.animating)
                   ? null
                   : (value) {
-                      setState(() {
-                        factor = double.parse(value.toStringAsFixed(1));
-                      });
+                      provider.setFactor(value);
+                      // setState(() {
+                      //   factor = double.parse(value.toStringAsFixed(1));
+                      // });
                     },
-              value: factor,
+              value: provider.factor,
             ),
             Center(
               child: Text(
-                (animating && animatefactor)
+                (provider.animating && provider.animatefactor)
                     ? "Factor: Animating"
-                    : "Factor: ${factor.toStringAsFixed(1)}",
+                    : "Factor: ${provider.factor.toStringAsFixed(1)}",
                 style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
@@ -256,19 +276,19 @@ class _EpicycloidCurveState extends State<EpicycloidCurve> {
 class Epicycloid extends StatefulWidget {
   Epicycloid({
     Key key,
-    @required this.factor,
-    @required this.total,
-    @required this.animatefactor,
-    @required this.animatepoints,
-    @required this.animating,
+    // @required this.factor,
+    // @required this.total,
+    // @required this.animatefactor,
+    // @required this.animatepoints,
+    // @required this.animating,
     @required this.isLandscape,
   }) : super(key: key);
 
-  double factor;
-  double total;
-  final bool animatefactor;
-  final bool animatepoints;
-  final bool animating;
+  // double factor;
+  // double total;
+  // final bool animatefactor;
+  // final bool animatepoints;
+  // final bool animating;
   final bool isLandscape;
 
   @override
@@ -276,31 +296,33 @@ class Epicycloid extends StatefulWidget {
 }
 
 class _EpicycloidState extends State<Epicycloid> {
-  nextStep() async {
+  nextStep(provider) async {
     await Future.delayed(Duration(milliseconds: 10));
-    if (this.mounted) {
-      setState(() {
-        if (widget.animatefactor) {
-          widget.factor += 0.01;
-        }
-        if (widget.animatepoints) {
-          widget.total += 0.3;
-        }
-        if (widget.factor > 51) {
-          widget.factor = 0;
-        }
-        if (widget.total > 500) {
-          widget.total = 0;
-        }
-      });
+    // if (this.mounted) {
+    //   setState(() {
+    if (provider.animatefactor) {
+      provider.factor += 0.01;
     }
+    if (provider.animatepoints) {
+      provider.point += 0.3;
+    }
+    if (provider.factor > 51) {
+      provider.factor = 0;
+    }
+    if (provider.point > 500) {
+      provider.point = 0;
+    }
+    provider.update();
+    // });
+    // }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.animating) {
+    final provider = Provider.of<EpicycloidCurveProvider>(context);
+    if (provider.animating) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        nextStep();
+        nextStep(provider);
       });
     }
     return Stack(
@@ -310,8 +332,8 @@ class _EpicycloidState extends State<Epicycloid> {
           scale: widget.isLandscape ? 0.7 : 1,
           child: CustomPaint(
             painter: EpicycloidPainter(
-                widget.factor,
-                widget.total,
+                provider.factor,
+                provider.point,
                 (widget.isLandscape
                         ? MediaQuery.of(context).size.width / 5
                         : MediaQuery.of(context).size.width / 2.4)
@@ -326,19 +348,19 @@ class _EpicycloidState extends State<Epicycloid> {
           ),
         ),
         Visibility(
-          visible: widget.animatepoints,
+          visible: provider.animatepoints,
           child: Positioned(
             right: 15,
             top: 40,
-            child: Text("Points: ${widget.total.toInt()}"),
+            child: Text("Points: ${provider.point.toInt()}"),
           ),
         ),
         Visibility(
-          visible: widget.animatefactor,
+          visible: provider.animatefactor,
           child: Positioned(
             left: 12,
             top: 40,
-            child: Text("Factor: ${widget.factor.toStringAsFixed(1)}"),
+            child: Text("Factor: ${provider.factor.toStringAsFixed(1)}"),
           ),
         ),
       ],
