@@ -11,7 +11,7 @@
         <meta name="description" content="Official site for Simulate">
       
       
-        <link rel="canonical" href="https://cod-ed.github.io/simulate/doc/">
+        <link rel="canonical" href="https://cod-ed.github.io/simulate/contributing/">
       
       
         <meta name="author" content="Yash Lamba">
@@ -21,7 +21,7 @@
     
     
       
-        <title>Home - Simulate</title>
+        <title>Contributing - Simulate</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#todo" class="md-skip">
+        <a href="#setting-up-simulate" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Home
+              Contributing
             
           </span>
         </div>
@@ -153,16 +153,14 @@
         
           
 
-  
-
-<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href=".." class="md-tabs__link">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
         Home
       </a>
     
@@ -176,7 +174,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" class="md-tabs__link md-tabs__link--active">
+        <a href="../doc/" class="md-tabs__link">
           Documentation
         </a>
       
@@ -251,11 +249,83 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../contributing/" title="Contributing" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Contributing
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Contributing" class="md-nav__link md-nav__link--active">
       Contributing
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-simulate" class="md-nav__link">
+    Setting Up Simulate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-your-stuff" class="md-nav__link">
+    Building your stuff
+  </a>
+  
+    <nav class="md-nav" aria-label="Building your stuff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixing-a-bug" class="md-nav__link">
+    Fixing a bug:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-simulation" class="md-nav__link">
+    Adding a new Simulation:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-docs" class="md-nav__link">
+    Setting Up Docs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -263,12 +333,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Documentation
@@ -290,20 +358,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../doc/" title="Home" class="md-nav__link">
       Home
     </a>
-    
   </li>
 
         
@@ -464,8 +523,57 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-simulate" class="md-nav__link">
+    Setting Up Simulate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-your-stuff" class="md-nav__link">
+    Building your stuff
+  </a>
+  
+    <nav class="md-nav" aria-label="Building your stuff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixing-a-bug" class="md-nav__link">
+    Fixing a bug:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-simulation" class="md-nav__link">
+    Adding a new Simulation:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-docs" class="md-nav__link">
+    Setting Up Docs
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -477,7 +585,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cod-ed/simulate/edit/master/docs/doc/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/cod-ed/simulate/edit/master/docs/contributing.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -485,7 +593,66 @@
                   
                 
                 
-                <h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h1>
+                  <h1>Contributing</h1>
+                
+                <div class="admonition note">
+<p>Before contributing, we highly recommend introducing yourself and your ideas on <a href="https://gitter.im/codEd-org/simulate#">gitter</a>.</p>
+</div>
+<h2 id="setting-up-simulate">Setting Up Simulate<a class="headerlink" href="#setting-up-simulate" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Make sure you have Flutter installed (<a href="https://flutter.dev/docs/get-started/install">https://flutter.dev/docs/get-started/install</a>)</li>
+<li>Fork the repository</li>
+<li>Clone the forked repository:
+<div class="highlight"><pre><span></span><code>git clone https://github.com/[YOUR USERNAME]/simulate.git
+</code></pre></div></li>
+<li>Connect a device or run an emulator (Make sure your connected device has USB Debugging enabled) </li>
+<li>Navigate to the project directory and Run:
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> simulate
+flutter run
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="building-your-stuff">Building your stuff<a class="headerlink" href="#building-your-stuff" title="Permanent link">&para;</a></h2>
+<h4 id="fixing-a-bug">Fixing a bug:<a class="headerlink" href="#fixing-a-bug" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Open an issue or report on <a href="https://gitter.im/codEd-org/simulate#">gitter</a></li>
+<li>Make a new branch
+<div class="highlight"><pre><span></span><code><span class="go">git checkout -b [BRANCH NAME]</span>
+</code></pre></div></li>
+<li>Fix the bug, push and open a pull request</li>
+</ol>
+<h4 id="adding-a-new-simulation">Adding a new Simulation:<a class="headerlink" href="#adding-a-new-simulation" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Discuss the idea first on <a href="https://gitter.im/codEd-org/simulate#">gitter</a> or just open an issue with the template.</li>
+<li>Discuss with the maintainers and get a simulation ID assigned.</li>
+<li>Build your simulation and open a PR!</li>
+</ol>
+<hr />
+<h2 id="setting-up-docs">Setting Up Docs<a class="headerlink" href="#setting-up-docs" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Install mkdocs and its requirements
+<div class="highlight"><pre><span></span><code>python3 -m  pip install mkdocs pymdown-extensions mkdocs-material
+</code></pre></div></li>
+<li>
+<p>Check the installations by:
+<div class="highlight"><pre><span></span><code>mkdocs --version
+</code></pre></div></p>
+<div class="admonition warning">
+<p>If this doesn't work, try restarting the terminal</p>
+</div>
+</li>
+<li>
+<p>Use the below command to host the documentation on local server
+<div class="highlight"><pre><span></span><code>mkdocs serve --dev-addr <span class="m">127</span>.0.0.1:8000
+</code></pre></div>
+<mark class="critic"> MkDocs supports live reload so you don't have to run the server again and again. Just make your changes in the docs and you'll see the change immediately. </mark></p>
+</li>
+<li>All the documentation is present in the <code>docs</code> directory.</li>
+</ol>
+<hr />
+<div class="admonition quote">
+<p><em>Don't hesitate in asking questions, it's a part of learning and everyone is here to help.</em></p>
+</div>
                 
                   
                     
@@ -494,7 +661,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: March 2, 2020
+      Last update: May 19, 2020
     
   </small>
 </div>
@@ -517,7 +684,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../contributing/" title="Contributing" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Home" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -526,19 +693,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Contributing
+                Home
               </div>
             </div>
           </a>
         
         
-          <a href="../simulations/" title="All Simulations" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../doc/" title="Home" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                All Simulations
+                Home
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
